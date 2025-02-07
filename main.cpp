@@ -4,6 +4,23 @@
 
 using namespace std;
 
+
+void f(int x) {std::cout << ++x;}
+void g(int &x) {std::cout << ++x;}
+
+
+void buildMatrix(int **matrix, int m, int n){
+ int init = 10;
+ matrix = new int*[m];
+ for(int i = 0; i < m; i++)
+ matrix[i] = new int[n];
+}
+void deleteMatrix(int **matrix, int m){
+ for (int i=0;i<m;i++)
+ delete [] matrix[i];
+ delete [] matrix;
+}
+
 int main(){
 
     cout << "Main ran" << endl;
@@ -27,6 +44,9 @@ for (int i=0;i<10;i++)
 //because it does not point to allocated memory. First, we have to allocate memory
 //by using "new" before derefrening.
 
+int i = 1;
+cout << "SOLUTION # " << i << "\n\n\n";
+i++;
 string * data[10];
 
 
@@ -77,14 +97,15 @@ theStructure[ i ][ j ] = 0;
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 */
-cout << "SOLUTION # 2 " << "\n\n\n";
+cout << "SOLUTION # " << i << "\n\n\n";
+i++;
 
 int **theStructure = new int*[20];//this part did the row allocation
 
 
 for (int i=0; i<20; i++){
 
-       theStructure[i] = new int[10];//this part of code was missing becasuse we were not allocating memory
+       theStructure[i] = new int[10];//this part of code was missing becasuse we were not allocating memory to integer pointers
                                      //this line of code did the coloumn allocaiton
 
 for (int j=0; j<10; j++){
@@ -108,6 +129,22 @@ void g(int &x) {std::cout << ++x;}
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 */
+cout << "SOLUTION # " << i << "\n\n\n";
+i++;
+
+int y = 10;
+int z = 10;
+f(y);
+cout << "\n\n";
+cout << y << "this is for pass by val" << endl;
+cout << "\n\n";
+g(z);
+cout << "\n\n";
+cout << z << " this is for pass by ref" << endl;
+//in f funciton the parameter is pass by value. The function is dealing with the copy of parameter.
+//any changes made to the parameter inside the function would not modify the orignal parameter
+//in g function the parameter is passed by ref, the function is dealing with the orignal argument
+//any changes made to the argument would modify the orignal argument
 
 
 /*
@@ -139,6 +176,13 @@ int main(){
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 */
+
+cout << "SOLUTION # " << i << "\n\n\n";
+i++;
+
+int **array;
+ buildMatrix(array, 2, 2);
+ deleteMatrix(array, 2);
 
 
 /*
